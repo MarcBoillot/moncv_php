@@ -1,9 +1,29 @@
 
-    <?php 
-        
+    <?php  
         $metaTitle = "contactez-moi";
         $metaDescription = "bienvenu sur ma page contact";
+       
+        $nom = filter_input(INPUT_POST, 'nom');
+        $prenom = filter_input(INPUT_POST, 'prenom');
+        $mail = filter_input(INPUT_POST, 'email');
+        $genre = filter_input(INPUT_POST, 'sexe' );
+        $reason = filter_input(INPUT_POST, 'selection');
+        $message = filter_input(INPUT_POST, 'message');
+        $data_contact = ["$genre", "$nom", "$prenom", "$mail" ,"$reason" ,"$message" ,"$data_contact"];
+        
+        date_default_timezone_set('Europe/Paris');
+        echo $date = date('Y-M-d_H-i-s');
+           
         require('header.php');
+
+        var_dump($_SERVER['REQUEST_METHOD']); 
+        if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['sexe']) && !empty($_POST['selection']) && !empty($_POST['message'])) {
+            file_put_contents("contact/contact_$date.txt", implode("\n", $data_contact) );  
+        }else{
+            
+            echo 'champs non-rempli';
+        }
+      
     ?>
 
     <div class="container-contact">
@@ -25,40 +45,53 @@
                 <p>marc.boillot@le-campus-numerique.fr</p>
             </div>
         </div>
-        <form action="https://httpbin.org" class="form" method="post">
+        <form action="" class="form" method="post">
             <div class="container-right">
                 <fieldset class="fieldsetmecontacter">
                     <legend class="entete-contact">Me contacter</legend>
                     <div>
-                        <label for="emailinput">Votre e-mail</label>
-                        <input type="text" name="email" id="emailinput" placeholder="exemple@mail.fr" required>
-                    </div><br>
-                    <div>
-                        <label for="nameinput">Votre nom</label>
-                        <input type="text" name="firstname" id="nameinput" placeholder="Dupont">
-                    </div><br>
-                    <div>
                         <fieldset class="genre">
                             <legend class="selection-genre">Sélectionner votre genre :</legend>
-                            <label for="homme">HOMME</label>
+                            <label for="homme">M.</label>
                             <input type="radio" name="sexe" value="homme" id="homme">
-                            <label for="femme">FEMME</label>
+                            <label for="femme">Mme.</label>
                             <input type="radio" name="sexe" value="femme" id="femme">
                         </fieldset><br>
+                    </div>
+                    <div>
+                        <label for="nameinput">Votre nom</label>
+                        <input type="text" name="nom" id="nameinput" placeholder="Dupont">
+                    </div><br>
+                    <div>
+                        <label for="nameinput">Votre prenom</label>
+                        <input type="text" name="prenom" id="nameinput" placeholder="Pierre">
+                    </div><br>
+                    <div>
+                        <label for="emailinput">Votre e-mail</label>
+                        <input type="email" name="email" id="emailinput" placeholder="exemple@mail.fr">
+                    </div><br>
+                    <div>
+                            <legend>Raison du contact</legend>
 
+                            <label for="raison" >Proposition d'emploi</label>
+                            <input type="radio" name="selection" value="proposition" id=proposition> 
+
+                            <label for="raison" >Demande d'informations</label>
+                            <input type="radio" name="selection" value="demande" id=Demande_info>  
+
+                            <label for="raison">Prestation</label>
+                            <input type="radio" name="selection" value="prestation" id=prestation>                
                     </div>
                     <div>
                         <label for="message"></label>
-                        <textarea name="message" id="message" cols="60" rows="20" placeholder="Ecrivez votre message" class="fieldtextarea" required></textarea><br>
+                        <textarea name="message" id="message" cols="60" rows="20" placeholder="Ecrivez votre message" class="fieldtextarea"></textarea><br>
                     </div>
                     <div>
-                        <input type="submit" value="Envoyer un mail">
+                        <input type="submit" value="Envoyer un mail" name="envoyer">
                         <input type="reset" name="buton" value="Annuler">
                     </div>
                 </fieldset>
             </div>
-
-
         </form>
 
     </div>
