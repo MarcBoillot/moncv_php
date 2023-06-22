@@ -16,7 +16,7 @@
 <header>
         <div class="navname">
             <nav class="navbar">
-                <a href="http://phpdebase.local/index.php?page=acceuil">Acceuil</a>
+                <a href="http://phpdebase.local/index.php?page=acceuil">ACCUEIL</a>
                 <a href="http://phpdebase.local/index.php?page=hobbies">HOBBIES</a>
                 <a href="http://phpdebase.local/index.php?page=contact">CONTACT</a>
             </nav>

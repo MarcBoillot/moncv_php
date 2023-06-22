@@ -7,6 +7,6 @@ elseif($_GET['page']=== 'contact'){
 }
 elseif($_GET['page'] === 'hobbies'){
     require ('hobbies.php');
-}
-    require ('404.php');
+}else{
+    require ('404.php');}
 ?>
