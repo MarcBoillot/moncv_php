@@ -1,0 +1,283 @@
+header {
+    background:linear-gradient(to bottom, rgba(255, 255, 255,0.5), rgba(255,255,255,0.5)),
+    url("img/fondcover.jpg");   
+    display: flex; 
+    justify-content: space-between;
+    margin-bottom: 0;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: inset 0 0 1em rgb(53, 52, 52), 0 0 1em rgb(222, 220, 220);
+    
+}
+
+
+.navname {
+    width: 80%;
+    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgb(173, 172, 88);
+}
+
+.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: rgb(92, 119, 143);
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(5, 5, 5);
+    text-decoration: none;
+    animation-duration: 2s;
+    animation-name: glissement;
+    animation-iteration-count:initial;
+}
+      @keyframes glissement {
+        from {
+          margin-left: 100%;
+          width: 300%;
+        }
+      
+        to {
+          margin-left: 0%;
+          width: 100%;
+        }
+}
+    
+/* On ajoute un coeur avant les liens */
+.navbar a::before, .navbar a::after {
+    content: " ";
+    display: block;
+    height: 2px;
+    background-color: black;
+    width: 10px;
+    animation-duration: 2s;
+    animation-name: glissement;
+    animation-iteration-count: infinite;
+}   
+  @keyframes glissement {
+    from {
+        margin-left:100%;
+        width: 300%;
+        }
+      
+        to {
+          margin-left: 0%;
+          width: 100%;
+        }
+    }
+  
+
+.nomprenom {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 80px;
+}
+   
+
+.photo img { 
+    border-radius: 20%;
+    box-shadow: inset 0 0 1em rgb(166, 161, 134), 0 0 2em black;
+}
+
+
+.description {
+    border-radius: 10px;
+    border: 2px solid black;
+    overflow: hidden;
+    margin-top: 0;
+    background-color: rgb(230, 235, 218);
+    box-shadow: inset 0 0 1em rgb(37, 37, 37), 0 0 2em black;
+}
+
+.profil-personnel {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.text-profil {
+    text-align: center;
+    margin-top: 2px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.compexpetu {
+    display: flex;
+    
+}
+
+.competences {
+    border-bottom: 2px solid black;
+    margin-top: 2px solid black;
+    margin: 0;
+    padding: 19px 0px;
+    text-align: center;
+    color: bisque;   
+}
+
+.listcomp {
+    margin-top: 100px;
+}
+
+.listcomp li{
+    margin-bottom: 50px;
+}
+
+.listcomp li::after{
+    content: ' ';
+    display: block;
+    height: 1px;
+    background-color: bisque;
+    margin-top: 20px;
+    width: 80%;
+    text-align: center;
+}
+
+aside {
+    box-shadow: inset 0 0 1em rgb(255, 255, 255), 0 0 1em rgb(222, 220, 220);
+    border: 2px solid black;
+    background-color:  rgb(61, 80, 97);
+    border-radius: 20px;
+    padding-right: 10px;   
+}
+
+aside ul {
+    border-bottom: solid 1px 0;
+    color: bisque;
+}
+
+.icon-html {
+    text-align: center;
+    color: bisque;
+    margin-top: 117px;
+}
+
+.icon-css {
+    text-align: center;
+    color: bisque;
+    margin-top: 117px;
+}
+
+.exp {
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgb(196, 196, 196);
+}
+
+.Experiences {
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 19px 0;
+    text-align: center;
+}
+
+
+.etu {
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.etudes {
+    text-align: center;
+    margin: 0;
+    padding: 19px 0;
+    border-bottom: 2px solid black;
+}
+
+
+.tableetu {
+    width: 100%;
+    font-family: cursive;
+}
+
+.container-contact {
+    display: flex;
+    
+}
+
+.container-right {
+    height: 100%;
+    background-color: rgb(234, 245, 245);
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: inset 0 0 1em rgb(49, 46, 46), 0 0 1em rgb(222, 220, 220);
+}
+
+.container-left {
+    width: 30%;
+    background-color: rgb(196, 190, 203);
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: inset 0 0 1em rgb(98, 92, 92), 0 0 1em rgb(222, 220, 220);
+}
+
+.contact{
+    width: 100%;
+}
+
+.location {
+    text-align: center;
+    margin-bottom: 100px;
+
+}
+
+.telephone {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.mail {
+    text-align: center;
+}
+
+.location-map {
+    width: 100%;
+    height: 200px;
+}
+
+.fieldsetmecontacter {
+    border-radius: 20px;
+}
+
+.entete-contact {
+    text-align: center;
+}
+
+.form {
+    width: 100%;
+}
+
+.genre {
+    width: 30%;
+    border-radius: 10px;
+}
+
+.selection-genre {
+    text-align: center;
+}
+
+.hobbies {
+    text-align: center;
+    color: darkred;
+}
+
+.fieldtextarea {
+    border-radius: 10px;
+}
+
+
+@media only screen and (max-width: 700px) {
+    aside {
+       background-color: aqua; 
+    }      
+}
