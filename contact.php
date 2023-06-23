@@ -9,14 +9,9 @@
         $genre = filter_input(INPUT_POST, 'sexe' );
         $reason = filter_input(INPUT_POST, 'selection');
         $message = filter_input(INPUT_POST, 'message');
-        $data_contact = ["$genre", "$nom", "$prenom", "$mail" ,"$reason" ,"$message" ,"$data_contact"];
-        var_dump($name);
-        date_default_timezone_set('Europe/Paris');
-        echo $date = date('Y-M-d_H-i-s');  
-        require('header.php');              
-    //$firstname = 
-    //if (value du first name != nulle )
-      
+        $str = filter_input(INPUT_POST,'nom', FILTER_SANITIZE_STRING);
+        $data_contact = ["$genre", "$nom", "$prenom", "$mail" ,"$reason" ,"$message" ,"$data_contact"]; 
+                
     ?>
 
     <div class="container-contact">
@@ -51,64 +46,97 @@
                             
                             <label for="femme">Mme.</label>
                             <input type="radio" name="sexe" value=<?php echo $genre?> id="femme">
-
+                           
                             <?php 
                             if (empty($_POST['sexe'])){
-                                echo 'champs non rempli';
+                                echo '*Veuillez remplir le champs*';
                             }
                             ?>
                         </fieldset><br>
                     </div>
                     <div>
-                        <label for="nameinput">Votre nom</label>
+                        <label for="nameinput" class=text-danger>Votre nom</label>
                         <input type="text" name="nom" id="nameinput" placeholder="Dupont" value=<?php echo $nom?>>
+
+                        <?php
+                            if ($str || strlen($nom) < 3) {
+                                echo("*Non valide*");
+                            } else {
+                                echo("Valide");
+                            }
+                        ?>
                         <?php 
                             if (empty($_POST['nom'])){
-                                echo 'champs non rempli';
+                                echo '*Veuillez remplir le champs*';
                             }
                         ?>
                     </div><br>
                     <div>
                         <label for="nameinput">Votre prenom</label>
                         <input type="text" name="prenom" id="nameinput" placeholder="Pierre" value=<?php echo $prenom?>>
+
+                        <?php
+                            if ($str || strlen($prenom) < 3) {
+                                echo "*Non valide*";
+                            } else {
+                                echo("Valide");
+                            }
+                        ?>
                         <?php 
                             if (empty($_POST['prenom'])){
-                                echo 'champs non rempli';
+                                echo '*Veuillez remplir le champs*';
                             }
                         ?>
                     </div><br>
                     <div>
+
                         <label for="emailinput">Votre e-mail</label>
-                        <input type="email" name="email" id="emailinput" placeholder="exemple@mail.fr" value=<?php echo $mail ?>>
-                        <?php 
-                            if (empty($_POST['email'])){
-                                echo 'champs non rempli';
-                                var_dump($_SERVER['REQUEST_METHOD']);
+                        <input type="email" name="email" id="emailinput" placeholder="exemple@mail.fr" value=<?php echo $mail ?>> 
+                
+                        <?php
+                            if (!filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL)) {
+                                echo("*Email non valide*");
+                            } else {
+                                echo("Valide");
                             }
                         ?>
+                        <?php 
+                            if (empty($_POST['email'])){
+                                echo '*Veuillez remplir le champs*';
+                            }
+                        ?>
+
                     </div><br>
                     <div>
                             <legend>Raison du contact</legend>
 
                             <label for="raison" >Proposition d'emploi</label>
-                            <input type="radio" name="selection" value="proposition" id=proposition> 
+                            <input type="radio" name="selection" value=<?php echo $reason ?> class=text-danger id=proposition_d_emploi> 
                         
                             <label for="raison" >Demande d'informations</label>
-                            <input type="radio" name="selection" value="demande" id=Demande_info>  
+                            <input type="radio" name="selection" value=<?php echo $reason ?> id=Demande_information>  
                            
                             <label for="raison">Prestation</label>
-                            <input type="radio" name="selection" value="prestation" id=prestation> 
+                            <input type="radio" name="selection" value=<?php echo $reason ?> id=prestation> 
                             <?php
                                 if (empty($_POST['selection'])){
-                                    echo '*champs non rempli*';}
+                                    echo '*Veuillez remplir le champs*';}
                             ?>
                     </div>
                     <div>
                         <label for="message"></label>
                         <textarea name="message" id="message" cols="60" rows="20" placeholder="Ecrivez votre message" class="fieldtextarea" value=<?php echo $message ?>></textarea><br>
+
+                        <?php
+                            if (strlen($message) < 10) {
+                                echo("*Non valide*");
+                            } else {
+                                echo("Valide");
+                            }
+                        ?>
                         <?php 
                             if (empty($_POST['message'])){
-                                echo 'champs non rempli';
+                                echo '*Veuillez remplir le champs*';
                             }
                         ?>
                     </div>
@@ -128,12 +156,5 @@
         </form>
 
     </div>
-    <footer>
-        <div>
-            <p>Adresse : 71 Quai Maurice Barjon 26500 Bourg-les-Valence</p>
-        </div>
-        <div>
-            <p>Numéro de Téléphone : 06-03-22-38-68</p>
-        </div>
-    </footer>
+
 </body>

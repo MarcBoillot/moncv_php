@@ -1,11 +1,10 @@
 
-    <?php 
-        
+    <?php        
         $metaTitle = "cv de marc";
-        $metaDescription = "bienvenu sur ma page cv";
-        require('header.php');
+        $metaDescription = "bienvenu sur ma page cv";   
     ?>
     <main>
+        
         <div class="description">
             <h2 class="profil-personnel">Profil personnel</h2>
             <p class="text-profil">A la recherche d'une entreprise dans laquelle je pourrais évoluer, m'épanouïr,
